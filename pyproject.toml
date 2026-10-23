@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "auto-customer-support"
+version = "0.1.0"
+description = "A local-first support desk: approved Markdown knowledge, chat, voice, email, and tracked human follow-up."
+requires-python = ">=3.11"
+license = "MIT"
+readme = "README.md"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn>=0.34,<1", "httpx>=0.28,<1",
+  "pydantic-settings>=2.7,<3", "PyYAML>=6.0.2,<7", "python-multipart>=0.0.20,<1",
+]
+
+[project.optional-dependencies]
+voice = ["faster-whisper>=1.1,<2"]
+phone = ["twilio>=9.4,<10"]
+dev = ["pytest>=8,<10", "pytest-asyncio>=0.25,<2"]
+
+[project.scripts]
+support-desk = "support_app.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["support_app*"]
+
+[tool.setuptools.package-data]
+support_app = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

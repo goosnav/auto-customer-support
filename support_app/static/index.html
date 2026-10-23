@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="A local workspace for customer conversations, business knowledge, and human follow-up.">
+  <title>Auto Customer Support · Workspace</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <section id="login-screen" class="login-screen">
+    <div class="login-brand"><span class="brand-icon" aria-hidden="true">a<span>↗</span></span><span>AUTO<br>SUPPORT</span></div>
+    <div class="login-copy"><p class="eyebrow">YOUR BUSINESS. YOUR KNOWLEDGE.</p><h1>Good support<br>starts here.</h1><p>One workspace for answers, conversations,<br>and the questions that need you.</p></div>
+    <form id="login-form" class="login-card">
+      <span class="eyebrow">LOCAL WORKSPACE / 01</span>
+      <h2>Open your workspace</h2>
+      <p>Use the admin token from your server setup.</p>
+      <label for="admin-token">Admin token</label>
+      <input id="admin-token" name="token" type="password" autocomplete="off" required placeholder="Paste your admin token" spellcheck="false">
+      <button class="button primary" type="submit">Open workspace <span aria-hidden="true">↗</span></button>
+      <p id="login-error" class="error-text" role="alert"></p>
+      <p class="fine-print">Your token stays in this browser session.<br>Customer chat has its own separate access.</p>
+    </form>
+    <div class="login-footer"><span>LOCAL FIRST. HUMAN WHEN NEEDED.</span><span>PROTOTYPE / V0.1</span></div>
+  </section>
+  <div id="workspace" class="workspace" hidden>
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="#overview" aria-label="Auto Support overview"><span class="brand-icon" aria-hidden="true">a<span>↗</span></span><span>AUTO<br>SUPPORT</span></a>
+      <p class="sidebar-label">WORKSPACE</p>
+      <nav id="navigation">
+        <a href="#overview" data-view="overview"><span class="nav-number">01</span> Overview <span class="nav-arrow" aria-hidden="true">↗</span></a>
+        <a href="#inbox" data-view="inbox"><span class="nav-number">02</span> Conversations <span id="nav-inbox-count" class="nav-count" hidden></span></a>
+        <a href="#knowledge" data-view="knowledge"><span class="nav-number">03</span> Knowledge</a>
+        <a href="#test" data-view="test"><span class="nav-number">04</span> Test desk</a>
+        <a href="#outbox" data-view="outbox"><span class="nav-number">05</span> Email delivery</a>
+        <a href="#setup" data-view="setup"><span class="nav-number">06</span> Setup</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="local-label"><span class="status-dot"></span> LOCAL FIRST</div><p>Answers from your knowledge.<br>Exceptions come back to you.</p><button id="sign-out" class="text-button">Lock workspace <span aria-hidden="true">↗</span></button></div>
+    </aside>
+    <div class="workspace-body">
+      <header class="topbar"><span class="topbar-label">CUSTOMER OPERATIONS</span><div class="topbar-right"><span id="business-name">Your workspace</span><span class="separator">/</span><span class="prototype-label">PROTOTYPE</span><button id="refresh" class="icon-button" aria-label="Refresh workspace" title="Refresh workspace">↻</button><button id="mobile-lock" class="text-button mobile-only" type="button">Lock</button></div></header>
+      <main id="main" tabindex="-1"><div id="page-content" aria-live="polite"></div></main>
+      <footer class="workspace-footer"><span>CONTROLLED KNOWLEDGE · TRACKED FOLLOW-UP</span><span id="last-updated">Waiting for server</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

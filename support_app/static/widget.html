@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Ask a question or get help from our support team.">
+  <title>Customer support</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/widget.css">
+  <script src="/static/widget-ui.js" defer></script>
+</head>
+<body>
+  <main class="support-card">
+    <header class="support-header"><div class="support-mark" aria-hidden="true">↗</div><div><h1 id="business-name">Customer support</h1><p><span class="available-dot"></span>Ask a question. We’ll help.</p></div><button type="button" id="close-widget" aria-label="Close support chat" hidden>×</button></header>
+    <section id="welcome" class="welcome">
+      <p class="eyebrow">LET’S GET THIS SORTED.</p>
+      <h2>How can<br>we help?</h2>
+      <p id="greeting">Ask about our products, policies, or an order. If we need to check something, we’ll record a follow-up for the team.</p>
+      <form id="start-form">
+        <label for="customer-name">Your name <span>(optional)</span></label>
+        <input id="customer-name" name="name" maxlength="100" autocomplete="name" placeholder="Your name">
+        <label for="customer-email">Email for a follow-up <span>(optional)</span></label>
+        <input id="customer-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="you@example.com">
+        <button class="primary" type="submit" id="start-button">Start conversation <span aria-hidden="true">↗</span></button>
+        <p class="privacy-note">Automated support with human follow-up when needed. Please don’t send passwords or payment details.</p>
+      </form>
+    </section>
+    <section id="conversation" class="conversation" hidden>
+      <div class="conversation-toolbar"><span>AUTOMATED SUPPORT</span><button id="new-conversation" type="button">New conversation ↗</button></div>
+      <div id="messages" class="messages" role="log" aria-live="polite" aria-label="Support conversation"></div>
+      <form id="contact-form" class="contact-form" hidden>
+        <label for="followup-email">Where should the team follow up?</label>
+        <div><input id="followup-email" type="email" maxlength="254" required autocomplete="email" placeholder="Your email address"><button type="submit">Save email</button></div>
+        <p>Or keep this conversation open to see the reply here.</p>
+      </form>
+      <form id="message-form" class="message-form">
+        <label for="message" class="sr-only">Your message</label>
+        <textarea id="message" maxlength="6000" rows="2" required placeholder="Write your question…"></textarea>
+        <div class="composer-actions"><button id="voice-button" class="voice-button" type="button" disabled><span aria-hidden="true">◉</span><span id="voice-label">Voice unavailable</span></button><button class="send-button" id="send-button" type="submit">Send <span aria-hidden="true">↗</span></button></div>
+        <p id="voice-status" class="voice-status" role="status" hidden></p>
+      </form>
+    </section>
+    <p id="chat-error" class="chat-error" role="alert" hidden></p>
+    <footer class="support-footer"><span>SUPPORT, WITH A HUMAN BACKUP.</span><span class="footer-mark">↗</span></footer>
+  </main>
+</body>
+</html>

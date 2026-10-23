@@ -1,0 +1,25 @@
+name: Tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -r requirements.lock
+      - run: pip install -e '.[dev,phone]'
+      - run: python -m pytest -q
+      - run: node --check support_app/static/app.js
+      - run: node --check support_app/static/widget-ui.js
+      - run: node --check support_app/static/widget.js

@@ -1,0 +1,28 @@
+services:
+  support:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      DATA_DIR: /app/data
+      KNOWLEDGE_DIR: /app/knowledge
+      OLLAMA_URL: ${DOCKER_OLLAMA_URL:-http://host.docker.internal:11434}
+    ports:
+      - "127.0.0.1:8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - support-data:/app/data
+      - support-knowledge:/app/knowledge
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 1g
+    pids_limit: 128
+    stop_grace_period: 30s
+
+volumes:
+  support-data:
+  support-knowledge:
